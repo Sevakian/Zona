@@ -37,6 +37,18 @@ services:
     volumes:
       - mysql:/var/lib/mysql
 
+  node:
+    image: node:20
+    container_name: zona-node
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html 
+    command: ["sh", "-c", "npm install && npm run dev"]
+    ports:
+      - "5173:5173"
+    networks:
+      - zona-network
+
 networks:
   zona-network:
     driver: bridge
