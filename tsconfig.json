@@ -6,7 +6,10 @@
     "paths": {
       "@/*": ["resources/js/*"]
     },
-    "strict": true
+    "strict": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "jsx": "preserve"
   }
 }
-  
