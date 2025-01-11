@@ -1,0 +1,51 @@
+name: Linter
+
+on: [push]
+
+jobs:
+  lint-php:
+    name: PHP Lint and Format
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Composer Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.composer/cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+
+      - name: Install PHP Dependencies
+        run: composer install --no-progress --no-suggest
+
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan analyse
+
+      - name: Check PHP Formatting
+        run: ./vendor/bin/pint --test
+
+  lint-node:
+    name: Node Lint and Format
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Node.js Dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run TypeScript Checks
+        run: npm run tsc
+
+      - name: Check Prettier Formatting
+        run: npm run format
