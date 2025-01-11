@@ -36,6 +36,10 @@
         }
     },
     "scripts": {
+        "lint": [
+            "./vendor/bin/phpstan analyse",
+            "./vendor/bin/pint --test"
+        ],
         "ide": [
             "php artisan ide-helper:models",
             "php artisan ide-helper:eloquent",
