@@ -12,16 +12,16 @@ export default {
     extend: {
       colors: {
         'zona-blue-1': {
-          DEFAULT: '#004d80'
+          DEFAULT: '#004d80',
         },
         'zona-blue-2': {
-          DEFAULT: '#006eb8'
+          DEFAULT: '#006eb8',
         },
         'zona-blue-3': {
-          DEFAULT: '#0092f3'
-        }
-      }
-    }
+          DEFAULT: '#0092f3',
+        },
+      },
+    },
   },
   plugins: [],
 };
