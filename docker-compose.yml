@@ -9,6 +9,7 @@ services:
       - ./:/var/www/html:delegated
     depends_on:
       - mysql
+      - node
     networks:
       - zona-network
 
@@ -40,6 +41,18 @@ services:
       - zona-network
     volumes:
       - mysql:/var/lib/mysql
+
+  node:
+    container_name: zona-node
+    image: node:20
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    command: ["sh", "-c", "npm install && npm run dev"]
+    ports:
+      - "5173:5173"
+    networks:
+      - zona-network
 
 networks:
   zona-network:
