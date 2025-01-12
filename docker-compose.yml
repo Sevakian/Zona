@@ -41,6 +41,19 @@ services:
     volumes:
       - mysql:/var/lib/mysql
 
+  test-mysql:
+    container_name: zona-test-mysql
+    image: mysql:8.0
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'zona-test'
+      MYSQL_DATABASE: 'zona-test'
+      MYSQL_USER: 'zona-test'
+      MYSQL_PASSWORD: 'zona-test'
+    networks:
+      - zona-network
+
 networks:
   zona-network:
     driver: bridge
