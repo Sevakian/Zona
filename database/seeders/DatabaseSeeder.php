@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Calendar;
 use App\Models\CalendarDate;
 use App\Models\CalendarUsage;
+use App\Models\Console;
+use App\Models\Game;
 use App\Models\Timestat;
 use App\Models\TimestatDate;
 use App\Models\User;
@@ -29,5 +31,8 @@ class DatabaseSeeder extends Seeder
         Timestat::factory()
             ->has(TimestatDate::factory(10))
             ->create();
+
+        Console::factory(10)->create();
+        Game::factory(50)->withRandomConsoles(random_int(2, 5))->create();
     }
 }
