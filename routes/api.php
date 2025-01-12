@@ -3,6 +3,8 @@
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\CalendarDateController;
 use App\Http\Controllers\CalendarUsageController;
+use App\Http\Controllers\ConsoleController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\TimestatController;
 use App\Http\Controllers\TimestatDateController;
 use Illuminate\Http\Request;
@@ -19,5 +21,7 @@ Route::group([], function () {
         'calendarUsage' => CalendarUsageController::class,
         'timestat' => TimestatController::class,
         'timestatDate' => TimestatDateController::class,
+        'game' => GameController::class,
+        'console' => ConsoleController::class,
     ]);
 });
